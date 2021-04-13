@@ -1,0 +1,12 @@
+#questionbg{
+    text-align: center;
+    background-color: cornsilk;
+}
+#question{
+    font-size: 2pc;
+}
+button{
+    border-radius:15px 15px 0px 0px;
+    width:50%;
+    margin-bottom: 10px;
+}

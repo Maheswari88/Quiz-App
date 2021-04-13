@@ -1,0 +1,15 @@
+#qc {
+    background-color: blue;
+    height:500px;
+}
+
+#qcbg {
+    background-color: blueviolet;
+    height: 70px;
+    margin-bottom: 50px;
+    border-radius: 15px 15px 0px 0px;
+}
+h1 {
+    font-size: 3pc;
+}
+
