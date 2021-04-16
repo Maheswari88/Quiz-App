@@ -2,11 +2,27 @@
     text-align: center;
     background-color: cornsilk;
 }
-#question{
+.question-count{
     font-size: 2pc;
+    margin-bottom: 15px;
 }
-button{
+#question{
+    font-size: 30px;
+    margin-bottom: 15px;
+    text-align:center;
+}
+.option-btn{
     border-radius:15px 15px 0px 0px;
     width:50%;
     margin-bottom: 10px;
+
+}
+Button{
+    margin-right: 150px;
+}
+.score-section{
+   font-size: 2pc;
+   position: relative;
+   top: 130px;
+   left: 50px;
 }
