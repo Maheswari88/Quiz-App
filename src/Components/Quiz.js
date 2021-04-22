@@ -1,14 +1,16 @@
-import {useState, useEffect} from 'react';
+import {useState,useRef} from 'react';
 import './quiz.css'
 import {quizData} from './quizData'
 import { Button} from 'antd';
 export default function Quiz(){
 
-
+   // eslint-disable-next-line
     // create currentQuestion as a statevariable
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const[showScore,setShowScore]= useState(false);
     const[score,setScore]= useState(0);
+    //const[disabled,setDisabled]=useState(false);
+
 
     const handleNextButtonClick = (e)=>{
         document.getElementById('option0').style.backgroundColor = "grey";
@@ -32,24 +34,32 @@ export default function Quiz(){
     }
 
     const handleAnswerButtonClick=(e,optionIndex)=>{
-        for(let i=0; i<4;i++){
+        /*for(let i=0; i<4;i++){
 
             if(i != optionIndex){
             document.getElementById(`option${i}`).style.backgroundColor = "grey";
             }
-            }
-        if(e.target.innerHTML==quizData[currentQuestion].answer){
-            e.target.style.backgroundColor='green'
+            } */
+        //e.target.style.backgroundColor='white'
+        if(e.target.innerHTML==quizData[currentQuestion].answer ){
             setScore(score+1);
+            //e.target.style.backgroundColor='green'
+            //e.target.setAttribute("disable",true);
         }else{
-          e.target.style.backgroundColor='red'
+            //e.target.style.backgroundColor='red'
         }
+        const nextQuestion= currentQuestion+1;
+         if(nextQuestion<quizData.length){
+             setCurrentQuestion(nextQuestion);
+         }else{
+             setShowScore(true);
+         }
     }
 
     return(
         <div id='quizappsec'>
 
-          <div>{showScore?  <div className='score-section'>You scored {score} out of {quizData.length} questions</div> : <div><div className='question-count'>
+          <div>{showScore?  <div className='score-section'>You have answered {score} out of {quizData.length} questions correctly</div> : <div><div className='question-count'>
 	            <span>Question {currentQuestion + 1}</span>/{quizData.length}
             </div>
           <div id='question'>{quizData[currentQuestion].question}</div>
@@ -59,9 +69,9 @@ export default function Quiz(){
              quizData[currentQuestion].answerOptions.map((element,index)=>{
                return(
                    <li>
-                     <button id={`option${index}`} className='option-btn' onClick={(e)=>{
+                     <button id={`option${index}`} disable={false} className='option-btn' onClick={(e)=>{
                           handleAnswerButtonClick(e,index);
-                     }} style={{backgroundColor:'grey'}}>{element.answerText}</button>
+                     }}  >{element.answerText}</button>
                    </li>
 
                )
@@ -71,12 +81,7 @@ export default function Quiz(){
           <br></br>
           <br></br>
           <span>
-             <Button type="primary" onClick={()=>{
-                 handlePreviousButtonClick()
-             }}>Previous</Button>
-             <Button type="primary"  onClick={(e)=>{
-                         handleNextButtonClick(e)
-                     }} >Next</Button>
+
 
           </span></div>}</div>
 
