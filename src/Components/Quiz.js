@@ -78,12 +78,8 @@ export default function Quiz(){
            })
           }
           </div>
-          <br></br>
-          <br></br>
-          <span>
 
-
-          </span></div>}</div>
+          </div>}</div>
 
         </div>
 
